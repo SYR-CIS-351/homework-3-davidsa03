@@ -84,6 +84,15 @@ fn sel_sort(a : &mut [u32]) {
 }
 
 fn insert_sort(a : &mut [u32]) {
+    for i in 1..a.len() {
+        let mut j = i;
+        let mut toInsert = a[i];
+        while (j > 0) && (a[j - 1] > toInsert) {
+            a[j] = a[j - 1];
+            j -= 1;
+        }
+        a[j] = toInsert;
+    }
 }
 
 fn binary_search(x : u32, a : &[u32]) -> Option<usize> {
