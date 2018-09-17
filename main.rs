@@ -114,8 +114,17 @@ fn binary_search(x : u32, a : &[u32]) -> Option<usize> {
 fn min_max(a : &[u32]) -> (u32,u32) {
     let len = a.len();
     assert!(len>0);
-
-    return (0,0);
+    let mut min = u32::max_value();
+    let mut max = 0;
+    for i in 0..a.len() {
+        if a[i] > max {
+            max = a[i];
+        }
+        if a[i] < min {
+            min = a[i];
+        }
+    }
+    return (min, max);
 }
 
 // NOTE:
