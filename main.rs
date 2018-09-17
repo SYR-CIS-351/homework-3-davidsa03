@@ -71,8 +71,16 @@ fn unordered_search(x : u32, a : &[u32]) -> Option<usize> {
     None
 }
 
-
 fn sel_sort(a : &mut [u32]) {
+    for i in 0..a.len() {
+        let mut minimum = i;
+        for j in i..a.len() {
+            if a[j] < a[minimum] {
+                minimum = j;
+            }
+        }
+        a.swap(i, minimum);
+    }
 }
 
 fn insert_sort(a : &mut [u32]) {
@@ -85,11 +93,10 @@ fn binary_search(x : u32, a : &[u32]) -> Option<usize> {
 fn min_max(a : &[u32]) -> (u32,u32) {
     let len = a.len();
     assert!(len>0);
-    
+
     return (0,0);
 }
-    
+
 // NOTE:
 // cmp::min(a,b) returns the minimum of a and b
 // cmp::max(a,b) returns the maximum of a and b
-
