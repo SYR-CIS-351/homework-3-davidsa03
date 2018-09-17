@@ -86,16 +86,28 @@ fn sel_sort(a : &mut [u32]) {
 fn insert_sort(a : &mut [u32]) {
     for i in 1..a.len() {
         let mut j = i;
-        let mut toInsert = a[i];
-        while (j > 0) && (a[j - 1] > toInsert) {
+        let mut to_insert = a[i];
+        while (j > 0) && (a[j - 1] > to_insert) {
             a[j] = a[j - 1];
             j -= 1;
         }
-        a[j] = toInsert;
+        a[j] = to_insert;
     }
 }
 
 fn binary_search(x : u32, a : &[u32]) -> Option<usize> {
+    let mut low_index = 0;
+    let mut high_index = a.len() - 1;
+    while low_index <= high_index {
+        let middle_index = (low_index + high_index) / 2;
+        if x < a[middle_index] {
+            high_index = middle_index - 1;
+        } else if x > a[middle_index] {
+            low_index = middle_index + 1;
+        } else {
+            return Some(middle_index);
+        }
+    }
     None
 }
 
